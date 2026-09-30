@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Inversiones</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; background: #f4f6f8; color: #333; }
+    .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    button { background: #2563eb; color: white; border: none; padding: 10px 16px; border-radius: 6px; font-weight: bold; width: 100%; margin-top: 10px; }
+    .price { font-size: 24px; font-weight: bold; color: #16a34a; }
+  </style>
+</head>
+<body>
+  <h2>Simulador de Inversiones</h2>
+  
+  <div class="card">
+    <h3>Mi Billetera Virtual</h3>
+    <p>Saldo disponible: <b id="balance">$10,000.00</b> USD</p>
+    <p>Acciones compradas: <b id="shares">0</b></p>
+  </div>
+
+  <div class="card">
+    <h3>Acción Ficticia (TECH)</h3>
+    <p>Precio actual: <span class="price" id="price">$5000.00</span> ARS</p>
+    <button onclick="buyStock()">Comprar 1 Acción</button>
+  </div>
+
+  <script>
+    let balance = 10000;
+    let shares = 0;
+    const price = 150;
+
+    function buyStock() {
+      if (balance >= price) {
+        balance -= price;
+        shares += 1;
+        document.getElementById('balance').innerText = `$${balance.toFixed(2)}`;
+        document.getElementById('shares').innerText = shares;
+      } else {
+        alert("Saldo insuficiente para realizar la compra.");
+      }
+    }
+  </script>
+</body>
+</html>
